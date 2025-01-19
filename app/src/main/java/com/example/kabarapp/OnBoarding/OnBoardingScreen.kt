@@ -46,6 +46,7 @@ fun OnBoardingScreen(modifier: Modifier = Modifier) {
                 .padding(horizontal = 20.dp)
             ,horizontalArrangement = androidx.compose.foundation.layout.Arrangement.SpaceBetween
             ,verticalAlignment = Alignment.CenterVertically
+
         ) {
             Indicator(
                 modifier = Modifier.width(52.dp),
