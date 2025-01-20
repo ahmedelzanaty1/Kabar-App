@@ -14,6 +14,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import com.example.kabarapp.Domain.manager.AppEntryUserCase
 import com.example.kabarapp.OnBoarding.OnBoardingScreen
+import com.example.kabarapp.OnBoarding.OnBoardingViewModel
 import com.example.kabarapp.ui.theme.KabarAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -36,7 +37,10 @@ class MainActivity : ComponentActivity() {
             KabarAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Box(modifier = Modifier.padding(innerPadding)) {
-                        OnBoardingScreen()
+                        val viewModel = OnBoardingViewModel(AppEntryUserCase)
+                        OnBoardingScreen(
+                            event = viewModel::onEvent
+                        )
                     }
                 }
             }
