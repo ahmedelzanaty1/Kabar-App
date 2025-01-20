@@ -20,7 +20,8 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 
 @Composable
-fun OnBoardingScreen(modifier: Modifier = Modifier) {
+fun OnBoardingScreen(modifier: Modifier = Modifier ,
+                     event: (OnBoardingEvent) -> Unit) {
 
     Column(modifier = modifier.fillMaxSize()) {
         val pagerState = rememberPagerState(initialPage = 0){
@@ -67,7 +68,7 @@ fun OnBoardingScreen(modifier: Modifier = Modifier) {
                 ButtonView(text = ButtonState.value[1], onClick = {
                     scope.launch {
                         if (pagerState.currentPage == 2) {
-                            //TODO navigate to home screen
+                            event(OnBoardingEvent.SaveAppEntry)
                         } else {
                             pagerState.animateScrollToPage(pagerState.currentPage + 1)
                         }
