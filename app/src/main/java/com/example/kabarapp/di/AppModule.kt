@@ -4,7 +4,7 @@ import android.app.Application
 import com.example.kabarapp.Data.UserManager
 import com.example.kabarapp.Domain.manager.AppEntryUserCase
 import com.example.kabarapp.Domain.manager.LocalUserManager
-import com.example.kabarapp.Domain.manager.ReadAppUsercase
+import com.example.kabarapp.Domain.manager.ReadAppEntry
 import com.example.kabarapp.Domain.manager.SaveAppUsecase
 import dagger.Module
 import dagger.Provides
@@ -22,7 +22,7 @@ object AppModule {
     fun provideAppEntryUsecase(
         localUserManager: LocalUserManager
     ) = AppEntryUserCase(
-        readAppUsercase = ReadAppUsercase(localUserManager),
-        saveAppUsecase = SaveAppUsecase(localUserManager)
+        readAppUsercases = ReadAppEntry(localUserManager),
+        saveAppUsecases = SaveAppUsecase(localUserManager)
     )
 }
