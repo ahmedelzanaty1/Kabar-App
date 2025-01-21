@@ -21,7 +21,7 @@ class OnBoardingViewModel @Inject constructor(
 
     private fun saveAppEntry() {
         viewModelScope.launch {
-            appEntryUserCase.saveAppUsecase()
+            appEntryUserCase.saveAppUsecases()
         }
 
 
