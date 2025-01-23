@@ -1,6 +1,5 @@
 package com.example.kabarapp.Home
 
-import android.graphics.drawable.Icon
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -23,14 +22,16 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
+import com.bumptech.glide.integration.compose.placeholder
 import com.example.kabarapp.Data.Api.Article
 import com.example.kabarapp.R
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
-fun ArticleCard(modifier: Modifier = Modifier,
-                article: Article
-                ,onclick : () -> Unit
+fun ArticleCard(
+    modifier: Modifier = Modifier,
+    article: Article
+    , onclick: () -> Unit, onClick: () -> Unit
 ) {
     Row(modifier = modifier.clickable { onclick() }) {
         GlideImage(
@@ -39,6 +40,10 @@ fun ArticleCard(modifier: Modifier = Modifier,
             ),
             model = article.urlToImage,
             contentDescription = ""
+            ,contentScale = androidx.compose.ui.layout.ContentScale.Crop
+            , loading = placeholder(
+                R.drawable.logo
+            )
         )
         Column(
             verticalArrangement = Arrangement.SpaceAround,
