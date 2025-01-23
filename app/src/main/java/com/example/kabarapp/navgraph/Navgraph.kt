@@ -1,14 +1,19 @@
-package com.example.kabarapp.navgraph
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navigation
+import androidx.paging.compose.collectAsLazyPagingItems
+import com.example.kabarapp.Home.HomeViewModel
 import com.example.kabarapp.OnBoarding.OnBoardingScreen
+import com.example.kabarapp.Search.SearchScreen
+import com.example.kabarapp.Search.SearchState
+import com.example.kabarapp.Search.SearchViewModel
+import com.loc.newsapp.presentation.home.HomeScreen
+
 @Composable
-fun NavGraph(modifier: Modifier = Modifier , startDestination: String) {
+fun NavGraph(startDestination: String) {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = startDestination) {
         navigation(
@@ -17,17 +22,26 @@ fun NavGraph(modifier: Modifier = Modifier , startDestination: String) {
         ) {
             composable(route = Route.OnBoardingScreen.route) {
                 OnBoardingScreen(event = {
-                    navController.navigate(Route.NewsNavigator.route)
+                    navController.navigate(Route.NewsNavigation.route)
                 })
             }
         }
         navigation(
-            route = Route.NewsNavigator.route,
+            route = Route.NewsNavigation.route,
             startDestination = Route.NewsNavigatorScreen.route
         ) {
             composable(route = Route.NewsNavigatorScreen.route) {
-                Text(text = "NewsNavigatorScreen")
+                val viewModel: HomeViewModel = hiltViewModel()
+                val articles = viewModel.news.collectAsLazyPagingItems()
+                HomeScreen(articles = articles, navigate = { route -> navController.navigate(route) }, viewModel = viewModel)
             }
+        }
+        composable(route = Route.SearchScreen.route) {
+            val viewModel: SearchViewModel = hiltViewModel()
+            SearchScreen(state = viewModel.state.value, event = {
+                viewModel.onEvent(it)
+            }, navigate = { route -> navController.navigate(route) })
         }
     }
 }
+

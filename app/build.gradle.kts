@@ -59,6 +59,7 @@ dependencies {
     // dagger hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+    implementation ("androidx.hilt:hilt-navigation-compose:1.2.0")
     // retrofit
     implementation (libs.retrofit)
     implementation (libs.converter.gson)

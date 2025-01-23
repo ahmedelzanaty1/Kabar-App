@@ -3,7 +3,6 @@ package com.example.kabarapp.Utils
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.kabarapp.Domain.manager.AppEntryUserCase
-import com.example.kabarapp.navgraph.Route
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -29,7 +28,7 @@ class MainViewModel @Inject constructor(
             appEntryUserCase.readAppUsercases()
                 .onEach { shouldStartFromHomeScreen ->
                     _startDestination.value = if (shouldStartFromHomeScreen) {
-                        Route.NewsNavigator.route
+                        Route.NewsNavigation.route
                     } else {
                         Route.AppStartNavigation.route
                     }

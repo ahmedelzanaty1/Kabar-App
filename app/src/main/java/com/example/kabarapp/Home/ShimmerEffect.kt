@@ -23,7 +23,6 @@ fun Modifier.shimmerEffect(): Modifier = composed {
     )
     graphicsLayer(alpha = alpha.value)
 }
-
 @Composable
 fun Articleshimmer(modifier: Modifier = Modifier) {
     Row(
@@ -31,18 +30,17 @@ fun Articleshimmer(modifier: Modifier = Modifier) {
     ) {
         Box(
             modifier = Modifier
-                .size(
-                    100.dp
-                )
+                .size(100.dp)
                 .clip(MaterialTheme.shapes.medium)
-                .shimmerEffect()
+                .shimmerEffect() // تأكد من تطبيق الشيمر فقط هنا
         )
         Column(
             verticalArrangement = Arrangement.SpaceAround,
             modifier = Modifier
-                .padding(horizontal = 100.dp)
+                .padding(horizontal = 10.dp)
                 .height(100.dp)
         ) {
+            // الشيمر فقط في هذا العنصر حيث تحتاجه
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -50,6 +48,7 @@ fun Articleshimmer(modifier: Modifier = Modifier) {
                     .padding(horizontal = 5.dp)
                     .shimmerEffect()
             )
+            // لا داعي لتكرار التأثير هنا في عناصر غير ضرورية
             Row(
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -60,11 +59,11 @@ fun Articleshimmer(modifier: Modifier = Modifier) {
                         .height(15.dp)
                         .shimmerEffect()
                 )
-
             }
         }
     }
 }
+
 
 @Preview(
     showBackground = true

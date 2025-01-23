@@ -23,5 +23,20 @@ class NewsImplement(
         ).flow
     }
 
+    override fun searchNews(searchQuery: String, sources: List<String>): Flow<PagingData<Article>> {
+        return Pager(
+            config = PagingConfig(pageSize = 10),
+            pagingSourceFactory = {
+                SearchNewsPagingSource(
+                    searchQuery = searchQuery,
+                    api = newsApi,
+                    sources = sources.joinToString(separator = ",")
+                )
+            }
+        ).flow
+
+
+    }
+
 }
 
