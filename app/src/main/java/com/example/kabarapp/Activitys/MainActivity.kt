@@ -1,5 +1,6 @@
 package com.example.kabarapp.Activitys
 
+import NavGraph
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
@@ -13,16 +14,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.lifecycle.lifecycleScope
-import com.example.kabarapp.Domain.manager.AppEntryUserCase
-import com.example.kabarapp.OnBoarding.OnBoardingScreen
-import com.example.kabarapp.OnBoarding.OnBoardingViewModel
 import com.example.kabarapp.Utils.MainViewModel
-import com.example.kabarapp.navgraph.NavGraph
 import com.example.kabarapp.ui.theme.KabarAppTheme
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -42,6 +36,7 @@ class MainActivity : ComponentActivity() {
                     Box(modifier = Modifier.padding(innerPadding)) {
                         val startDestination = viewModel.startDestination.value
                         NavGraph(startDestination = startDestination)
+
 
                     }
                 }
