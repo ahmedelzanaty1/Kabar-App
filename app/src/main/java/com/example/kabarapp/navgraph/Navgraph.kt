@@ -42,6 +42,8 @@ fun NavGraph(startDestination: String) {
                 viewModel.onEvent(it)
             }, navigate = { route -> navController.navigate(route) })
         }
+
+        }
     }
-}
+
 

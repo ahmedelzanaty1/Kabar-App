@@ -1,5 +1,4 @@
 package com.example.kabarapp.di
-
 import android.app.Application
 import com.example.kabarapp.Data.Api.NewsApi
 import com.example.kabarapp.Data.Api.repository.NewsImplement
@@ -61,7 +60,7 @@ object AppModule {
     ) : NewsUseCase {
         return NewsUseCase(
             getNews = GetNews(newsRepository)
-        , searchNews = com.example.kabarapp.Domain.manager.SearchNews(newsRepository))
+            , searchNews = com.example.kabarapp.Domain.manager.SearchNews(newsRepository))
 
     }
 }
