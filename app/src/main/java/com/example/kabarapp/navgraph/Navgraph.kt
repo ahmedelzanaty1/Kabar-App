@@ -7,11 +7,13 @@ import androidx.navigation.navigation
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.kabarapp.Home.HomeViewModel
 import com.example.kabarapp.OnBoarding.OnBoardingScreen
+import com.example.kabarapp.Search.SearchScreen
+import com.example.kabarapp.Search.SearchState
+import com.example.kabarapp.Search.SearchViewModel
 import com.loc.newsapp.presentation.home.HomeScreen
 
-
 @Composable
-fun NavGraph( startDestination: String) {
+fun NavGraph(startDestination: String) {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = startDestination) {
         navigation(
@@ -31,10 +33,15 @@ fun NavGraph( startDestination: String) {
             composable(route = Route.NewsNavigatorScreen.route) {
                 val viewModel: HomeViewModel = hiltViewModel()
                 val articles = viewModel.news.collectAsLazyPagingItems()
-                HomeScreen(articles = articles , navigate = {} , viewModel = viewModel)
-
-
+                HomeScreen(articles = articles, navigate = { route -> navController.navigate(route) }, viewModel = viewModel)
             }
+        }
+        composable(route = Route.SearchScreen.route) {
+            val viewModel: SearchViewModel = hiltViewModel()
+            SearchScreen(state = viewModel.state.value, event = {
+                viewModel.onEvent(it)
+            }, navigate = { route -> navController.navigate(route) })
         }
     }
 }
+

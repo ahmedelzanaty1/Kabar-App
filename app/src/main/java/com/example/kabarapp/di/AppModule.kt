@@ -60,7 +60,8 @@ object AppModule {
         newsRepository: NewsRepository
     ) : NewsUseCase {
         return NewsUseCase(
-            getNews = GetNews(newsRepository))
+            getNews = GetNews(newsRepository)
+        , searchNews = com.example.kabarapp.Domain.manager.SearchNews(newsRepository))
 
     }
 }
