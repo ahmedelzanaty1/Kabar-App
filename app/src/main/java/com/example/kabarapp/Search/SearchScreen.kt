@@ -21,7 +21,7 @@ fun SearchScreen(
 
     Column(
         modifier = Modifier
-            .padding(top = 4.dp, start = 4.dp, end = 4.dp)
+            .padding(top = 5.dp, start = 5.dp, end = 5.dp)
             .statusBarsPadding()
     ) {
         SearchBar(
@@ -38,7 +38,7 @@ fun SearchScreen(
             ArticlesList(
                 articles = articles,
                 onClick = {
-                    //TODO: Navigate to details screen
+                    navigate(Route.DetailsScreen.route + "/${it.url}")
                 }
             )
         }
