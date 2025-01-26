@@ -1,16 +1,13 @@
 package com.example.kabarapp.Details
 
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
-import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
@@ -25,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.bumptech.glide.integration.compose.placeholder
-import com.example.kabarapp.Data.Api.Article
+import com.example.kabarapp.Data.Local.Article
 import com.example.kabarapp.Data.Api.Source
 import com.example.kabarapp.R
 import com.example.kabarapp.ui.theme.KabarAppTheme

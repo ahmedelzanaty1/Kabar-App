@@ -4,7 +4,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.kabarapp.Data.Api.ApiPagingSources
-import com.example.kabarapp.Data.Api.Article
+import com.example.kabarapp.Data.Local.Article
 import com.example.kabarapp.Data.Api.NewsApi
 import kotlinx.coroutines.flow.Flow
 

@@ -59,7 +59,7 @@ dependencies {
     // dagger hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
-    implementation ("androidx.hilt:hilt-navigation-compose:1.2.0")
+    implementation (libs.androidx.hilt.navigation.compose)
     // retrofit
     implementation (libs.retrofit)
     implementation (libs.converter.gson)
@@ -67,6 +67,8 @@ dependencies {
     implementation (libs.compose)
     // data store
     implementation(libs.androidx.datastore.preferences)
+    implementation(libs.androidx.room.ktx)
+
     // compose
     implementation(libs.androidx.foundation)
 

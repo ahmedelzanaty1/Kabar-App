@@ -1,7 +1,7 @@
 package com.example.kabarapp.Domain.manager
 
 import androidx.paging.PagingData
-import com.example.kabarapp.Data.Api.Article
+import com.example.kabarapp.Data.Local.Article
 import com.example.kabarapp.Data.Api.repository.NewsRepository
 import kotlinx.coroutines.flow.Flow
 
