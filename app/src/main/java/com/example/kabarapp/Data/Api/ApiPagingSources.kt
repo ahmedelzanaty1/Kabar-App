@@ -2,6 +2,7 @@ package com.example.kabarapp.Data.Api
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.example.kabarapp.Data.Local.Article
 
 class ApiPagingSources (
     private val api: NewsApi,

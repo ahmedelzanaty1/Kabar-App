@@ -1,8 +1,12 @@
 package com.example.kabarapp.di
 import android.app.Application
+import androidx.room.Room
 import com.example.kabarapp.Data.Api.NewsApi
 import com.example.kabarapp.Data.Api.repository.NewsImplement
 import com.example.kabarapp.Data.Api.repository.NewsRepository
+import com.example.kabarapp.Data.Local.NewsDao
+import com.example.kabarapp.Data.Local.NewsDataBase
+import com.example.kabarapp.Data.Local.NewsTypeConverter
 import com.example.kabarapp.Data.UserManager
 import com.example.kabarapp.Domain.manager.AppEntryUserCase
 import com.example.kabarapp.Domain.manager.GetNews
@@ -62,5 +66,26 @@ object AppModule {
             getNews = GetNews(newsRepository)
             , searchNews = com.example.kabarapp.Domain.manager.SearchNews(newsRepository))
 
+    }
+    @Provides
+    @Singleton
+    fun provideNewsDatabase(
+        application: Application
+    ): NewsDataBase {
+        return Room.databaseBuilder(
+            context = application,
+            klass = NewsDataBase::class.java,
+            name = "news_db"
+        ).addTypeConverter(NewsTypeConverter())
+            .fallbackToDestructiveMigration()
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideNewsDao(
+        newsDatabase: NewsDataBase
+    ): NewsDao {
+        return newsDatabase.newsdao
     }
 }
