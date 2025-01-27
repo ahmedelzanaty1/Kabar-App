@@ -78,7 +78,6 @@ fun handlePagingResult(articles: LazyPagingItems<Article>): Boolean {
 
     return when {
         loadState.refresh is LoadState.Loading -> {
-            ShimmerEffect(Modifier.padding(horizontal = 4.dp))
             false
         }
 
@@ -93,13 +92,3 @@ fun handlePagingResult(articles: LazyPagingItems<Article>): Boolean {
     }
 }
 
-@Composable
-fun ShimmerEffect(modifier: Modifier) {
-    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-        repeat(10) {
-            ShimmerEffect(
-                modifier = Modifier.padding(horizontal = 4.dp)
-            )
-        }
-    }
-}
