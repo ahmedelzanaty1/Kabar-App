@@ -61,10 +61,14 @@ object AppModule {
     @Singleton
     fun provideNewsUseCase(
         newsRepository: NewsRepository
+        , newsDao: NewsDao
     ) : NewsUseCase {
         return NewsUseCase(
             getNews = GetNews(newsRepository)
-            , searchNews = com.example.kabarapp.Domain.manager.SearchNews(newsRepository))
+            , searchNews = com.example.kabarapp.Domain.manager.SearchNews(newsRepository)
+        , selectArticle = com.example.kabarapp.Domain.manager.SelectArticle(newsDao)
+        , upsertArticle = com.example.kabarapp.Domain.manager.UpsertArticle(newsDao)
+        , deleteArticle = com.example.kabarapp.Domain.manager.DeleteArticle(newsDao))
 
     }
     @Provides
