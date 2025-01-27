@@ -1,5 +1,6 @@
 package com.loc.newsapp.presentation.home
 
+import ArticlesList
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.layout.Column
@@ -24,7 +25,6 @@ import androidx.paging.compose.LazyPagingItems
 import com.example.kabarapp.Data.Local.Article
 import com.example.kabarapp.Home.HomeViewModel
 import com.example.kabarapp.R
-import com.loc.newsapp.presentation.common.ArticlesList
 import com.loc.newsapp.presentation.common.SearchBar
 
 

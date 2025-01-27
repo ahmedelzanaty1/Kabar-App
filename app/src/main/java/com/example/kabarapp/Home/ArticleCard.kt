@@ -30,10 +30,10 @@ import com.example.kabarapp.R
 @Composable
 fun ArticleCard(
     modifier: Modifier = Modifier,
-    article: Article
-    , onclick: () -> Unit, onClick: () -> Unit
+    article: Article,
+    onClick: (() -> Unit)? = null
 ) {
-    Row(modifier = modifier.clickable { onclick() }) {
+    Row(modifier = modifier.clickable { onClick?.invoke() }) {
         GlideImage(
             modifier = Modifier.size(100.dp).clip(
                 MaterialTheme.shapes.medium
