@@ -1,5 +1,6 @@
 package com.loc.newsapp.presentation.home
 
+import ArticlesList
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.layout.Column
@@ -21,10 +22,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.paging.compose.LazyPagingItems
-import com.example.kabarapp.Data.Api.Article
+import com.example.kabarapp.Data.Local.Article
 import com.example.kabarapp.Home.HomeViewModel
 import com.example.kabarapp.R
-import com.loc.newsapp.presentation.common.ArticlesList
 import com.loc.newsapp.presentation.common.SearchBar
 
 
@@ -89,7 +89,6 @@ fun HomeScreen(articles: LazyPagingItems<Article>, navigate:(String) -> Unit, vi
             modifier = Modifier.padding(horizontal = 3.dp),
             articles = articles,
             onClick = {
-                //TODO: Navigate to Details Screen
             }
         )
     }

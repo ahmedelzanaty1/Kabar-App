@@ -1,7 +1,7 @@
 package com.example.kabarapp.Data.Api.repository
 
 import androidx.paging.PagingData
-import com.example.kabarapp.Data.Api.Article
+import com.example.kabarapp.Data.Local.Article
 import kotlinx.coroutines.flow.Flow
 
 interface NewsRepository {

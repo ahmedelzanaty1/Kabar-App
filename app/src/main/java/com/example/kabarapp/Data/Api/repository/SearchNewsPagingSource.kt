@@ -2,7 +2,7 @@ package com.example.kabarapp.Data.Api.repository
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.kabarapp.Data.Api.Article
+import com.example.kabarapp.Data.Local.Article
 import com.example.kabarapp.Data.Api.NewsApi
 import java.lang.Exception
 

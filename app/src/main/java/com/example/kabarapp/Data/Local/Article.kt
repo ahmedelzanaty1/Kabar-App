@@ -1,5 +1,10 @@
-package com.example.kabarapp.Data.Api
+package com.example.kabarapp.Data.Local
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.example.kabarapp.Data.Api.Source
+
+@Entity
 data class Article(
     val author: String,
     val content: String,
@@ -7,6 +12,6 @@ data class Article(
     val publishedAt: String,
     val source: Source,
     val title: String,
-    val url: String,
+    @PrimaryKey val url: String,
     val urlToImage: String
 )

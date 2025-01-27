@@ -1,5 +1,6 @@
 package com.example.kabarapp.Search
 
+import ArticlesList
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -9,7 +10,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.loc.newsapp.presentation.common.ArticlesList
 import com.loc.newsapp.presentation.common.SearchBar
 
 @Composable
@@ -38,7 +38,7 @@ fun SearchScreen(
             ArticlesList(
                 articles = articles,
                 onClick = {
-                    //TODO: Navigate to details screen
+                    navigate(Route.DetailsScreen.route + "/${it.url}")
                 }
             )
         }

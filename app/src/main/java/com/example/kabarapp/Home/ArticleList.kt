@@ -1,5 +1,3 @@
-package com.loc.newsapp.presentation.common
-
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -11,9 +9,34 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
-import com.example.kabarapp.Data.Api.Article
+import com.example.kabarapp.Data.Local.Article
 import com.example.kabarapp.Home.ArticleCard
 import com.example.kabarapp.Home.EmptyScreen
+
+@Composable
+fun ArticlesList(
+    modifier: Modifier = Modifier,
+    articles: List<Article>,
+    onClick: (Article) -> Unit
+) {
+    if (articles.isEmpty()){
+        EmptyScreen()
+    }
+    LazyColumn(
+        modifier = modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(4.dp),
+        contentPadding = PaddingValues(all = 3.dp)
+    ) {
+        items(
+            count = articles.size,
+        ) {
+            articles[it]?.let { article ->
+                ArticleCard(article = article, onClick = { onClick(article) })
+            }
+        }
+    }
+
+}
 
 @Composable
 fun ArticlesList(
@@ -21,24 +44,22 @@ fun ArticlesList(
     articles: LazyPagingItems<Article>,
     onClick: (Article) -> Unit
 ) {
+
     val handlePagingResult = handlePagingResult(articles)
+
 
     if (handlePagingResult) {
         LazyColumn(
             modifier = modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(4.dp),
-            contentPadding = PaddingValues(all = 4.dp)
+            contentPadding = PaddingValues(all = 3.dp)
         ) {
             items(
                 count = articles.itemCount,
             ) {
                 articles[it]?.let { article ->
-                    ArticleCard(
-                        article = article,
-                        onClick = { onClick(article) },
-                        modifier = Modifier.padding(8.dp),
-                        onclick = { onClick(article) }
-                    )
+                    ArticleCard(article = article,
+                        onClick = { onClick(article) })
                 }
             }
         }
@@ -70,3 +91,4 @@ fun handlePagingResult(articles: LazyPagingItems<Article>): Boolean {
         }
     }
 }
+
