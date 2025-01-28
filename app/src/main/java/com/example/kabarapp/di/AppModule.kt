@@ -68,7 +68,8 @@ object AppModule {
             , searchNews = com.example.kabarapp.Domain.manager.SearchNews(newsRepository)
         , selectArticle = com.example.kabarapp.Domain.manager.SelectArticle(newsDao)
         , upsertArticle = com.example.kabarapp.Domain.manager.UpsertArticle(newsDao)
-        , deleteArticle = com.example.kabarapp.Domain.manager.DeleteArticle(newsDao))
+        , deleteArticle = com.example.kabarapp.Domain.manager.DeleteArticle(newsDao)
+        , getSavedArticle = com.example.kabarapp.Domain.manager.GetSavedArticle(newsDao))
 
     }
     @Provides

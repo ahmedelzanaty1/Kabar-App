@@ -29,7 +29,7 @@ import com.loc.newsapp.presentation.common.SearchBar
 
 
 @Composable
-fun HomeScreen(articles: LazyPagingItems<Article>, navigate:(String) -> Unit, viewModel: HomeViewModel) {
+fun HomeScreen(articles: LazyPagingItems<Article>, navigateToSearch:() -> Unit , navigateToDetails: (Article) -> Unit) {
 
     val titles by remember {
         derivedStateOf {
@@ -69,7 +69,7 @@ fun HomeScreen(articles: LazyPagingItems<Article>, navigate:(String) -> Unit, vi
             onValueChange = {},
             onSearch = {},
             onClick = {
-                navigate(Route.SearchScreen.route)
+                navigateToSearch()
             }
         )
 
@@ -89,6 +89,7 @@ fun HomeScreen(articles: LazyPagingItems<Article>, navigate:(String) -> Unit, vi
             modifier = Modifier.padding(horizontal = 3.dp),
             articles = articles,
             onClick = {
+                navigateToDetails(it)
             }
         )
     }
