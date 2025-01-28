@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
 @Database(entities = [Article::class], version = 1)
-@TypeConverters(NewsTypeConverter::class)
+@TypeConverters(NewsTypeConverter::class , Converters::class)
 abstract class NewsDataBase : RoomDatabase() {
     abstract val newsdao: NewsDao
 
